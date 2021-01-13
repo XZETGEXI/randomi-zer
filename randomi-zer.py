@@ -50,17 +50,20 @@ def main():
     # Fetch a song at random
     try:
         r = get_song(headers).json()
+                
+        # Prints the result
+        print("Got you", r["response"]["song"]["full_title"])
+        print("@", r["response"]["song"]["url"])
+    
+        # Prints date if it exists
+        get_date(r)
+        # Prints YT link if it exists
+        get_yt_link(r)
+    
     except:
         print("Unknown error happened.")
-        break
-    # Prints the result
-    print("Got you", r["response"]["song"]["full_title"])
-    print("@", r["response"]["song"]["url"])
+
     
-    # Prints date if it exists
-    get_date(r)
-    # Prints YT link if it exists
-    get_yt_link(r)
 
 
 
@@ -72,3 +75,4 @@ if __name__ == "__main__":
     time.sleep(1.618033)
     
     main()
+    
