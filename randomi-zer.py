@@ -41,7 +41,6 @@ def get_date(r):
             
 def main():
     # Authorization header
-    # Replace 'Bearer [TOKEN]' with your own
     headers = {"User-Agent": "CompuServe Classic/1.22",
     "Accept": "application/json",
     "Host": "api.genius.com",
