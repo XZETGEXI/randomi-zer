@@ -10,12 +10,13 @@ def get_song(headers):
     req_url = "https://api.genius.com/songs/" + str(s)
     
     r = requests.get(req_url, headers = headers)
-    if r.json()["meta"]["status"] == 200:
+    r = r.json()
+    if r["meta"]["status"] == 200:
         print("Found you a song! \n")
         return r
     else:
         print("404, trying again")
-        get_song(headers)
+        return get_song(headers)
 
 
 
@@ -49,7 +50,7 @@ def main():
     
     # Fetch a song at random
     try:
-        r = get_song(headers).json()
+        r = get_song(headers)
                 
         # Prints the result
         print("Got you", r["response"]["song"]["full_title"])
@@ -60,8 +61,8 @@ def main():
         # Prints YT link if it exists
         get_yt_link(r)
     
-    except:
-        print("Unknown error happened.")
+    except Exception as e:
+        print("Unknown error happened:", e)
 
     
 
@@ -75,4 +76,3 @@ if __name__ == "__main__":
     time.sleep(1.618033)
     
     main()
-    
