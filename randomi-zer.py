@@ -52,6 +52,7 @@ def main():
         r = get_song(headers).json()
     except:
         print("Unknown error happened.")
+        break
     # Prints the result
     print("Got you", r["response"]["song"]["full_title"])
     print("@", r["response"]["song"]["url"])
